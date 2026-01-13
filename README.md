@@ -52,7 +52,7 @@ The system is composed of three main services communicating over a private Docke
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/Microservices-Dockerized-AI.git
+git clone https://github.com/F-Karakaya/Microservices-Dockerized-AI.git
 cd Microservices-Dockerized-AI
 ```
 
