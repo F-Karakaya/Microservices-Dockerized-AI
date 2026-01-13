@@ -1,8 +1,14 @@
 # 🚀 Microservices Dockerized AI System
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Docker](https://img.shields.io/badge/docker-ready-blue.svg)
-![Kubernetes](https://img.shields.io/badge/kubernetes-ready-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.9-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![C#](https://img.shields.io/badge/C%23-8.0-239120?style=for-the-badge&logo=c-sharp&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![.NET](https://img.shields.io/badge/.NET_Core-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Build Status](https://img.shields.io/badge/Build-Passing-success?style=for-the-badge&logo=github-actions&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
 A production-grade, microservices-based AI system demonstrating modern architectural patterns, container orchestration, and scalable deployment strategies. This project separates concerns by isolating the AI inference logic, API management, and user interface into distinct, containerized services.
 
@@ -21,6 +27,11 @@ The system is composed of three main services communicating over a private Docke
 3.  **AI Service** (FastAPI + PyTorch): The compute-heavy worker that hosts the sentiment analysis model.
 
 [Read more about the Architecture](docs/architecture.md)
+
+![Service Flow Architecture](outputs/service_flow.png)
+
+*Figure 1: High-level architecture showing the flow of requests from User to Frontend, Gateway, and AI Service.*
+
 
 ## 🛠️ Technology Stack
 
@@ -129,8 +140,8 @@ kubectl apply -f kubernetes/ingress.yaml
 ## 📊 Results & Artifacts
 
 You can inspect the `outputs/` directory for evidence of the system's operation:
--   [Service Flow](./outputs/service_flow.png): Diagram of service interaction.
 -   [API Responses](./outputs/api_responses.json): Captured JSON responses.
+
 -   [Docker Logs](./outputs/docker_logs.txt): Real runtime logs showing successful communication.
 
 ## 🔧 Troubleshooting
