@@ -1,0 +1,31 @@
+ai-service      | INFO:     Started server process [1]
+ai-service      | INFO:     Waiting for application startup.
+ai-service      | INFO:     Loading model: distilbert-base-uncased-finetuned-sst-2-english
+api-gateway     | info: Microsoft.Hosting.Lifetime[14]
+api-gateway     |       Now listening on: http://[::]:8080
+api-gateway     | info: Microsoft.Hosting.Lifetime[0]
+api-gateway     |       Application started. Press Ctrl+C to shut down.
+api-gateway     | info: Microsoft.Hosting.Lifetime[0]
+api-gateway     |       Hosting environment: Production
+ai-service      | INFO:     Model loaded successfully.
+ai-service      | INFO:     Application startup complete.
+ai-service      | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+frontend-service| 
+frontend-service|   You can now view your Streamlit app in your browser.
+frontend-service| 
+frontend-service|   URL: http://0.0.0.0:8501
+frontend-service| 
+api-gateway     | info: ApiGateway.Controllers.InferenceController[0]
+api-gateway     |       Received inference request via Gateway.
+ai-service      | INFO:     Processing request for text length: 47
+ai-service      | INFO:     172.18.0.3:54321 - "POST /predict HTTP/1.1" 200 OK
+api-gateway     | info: ApiGateway.Controllers.InferenceController[0]
+api-gateway     |       AI Service responded successfully.
+api-gateway     | info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+api-gateway     |       Request finished HTTP/1.1 POST http://api-gateway:8080/api/Inference application/json 57 - 200 205 application/json;+charset=utf-8 152.0000ms
+api-gateway     | info: ApiGateway.Controllers.InferenceController[0]
+api-gateway     |       Received inference request via Gateway.
+ai-service      | INFO:     Processing request for text length: 59
+ai-service      | INFO:     172.18.0.3:54326 - "POST /predict HTTP/1.1" 200 OK
+api-gateway     | info: ApiGateway.Controllers.InferenceController[0]
+api-gateway     |       AI Service responded successfully.

@@ -1,0 +1,24 @@
+# Exclude git history
+.git
+.gitignore
+
+# Exclude Docker artifacts
+docker-compose.yml
+Dockerfile
+.dockerignore
+
+# Exclude IDE settings
+.vscode
+.idea
+
+# Exclude build artifacts
+bin/
+obj/
+__pycache__
+*.pyc
+
+# Exclude documentation and outputs from context
+docs/
+outputs/
+ci-cd/
+kubernetes/

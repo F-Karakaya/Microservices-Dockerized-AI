@@ -1,0 +1,66 @@
+version: '3.8'
+
+# Docker Compose for Microservices-Dockerized-AI
+# Orchestrates the AI Service, API Gateway, and Frontend Service on a shared network.
+
+services:
+  # AI Service: The backend inference engine
+  ai-service:
+    build:
+      context: ./services/ai-service
+      dockerfile: Dockerfile
+    container_name: ai-service
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+    networks:
+      - ai-network
+    restart: always
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/health" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # API Gateway: The entry point for the backend
+  api-gateway:
+    build:
+      context: ./services/api-gateway
+      dockerfile: Dockerfile
+    container_name: api-gateway
+    ports:
+      - "5000:8080" # Map host 5000 to container 8080 (HTTP)
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - Services__AIService=http://ai-service:8000
+    depends_on:
+      ai-service:
+        condition: service_healthy
+    networks:
+      - ai-network
+    restart: on-failure
+
+  # Frontend Service: The User Interface
+  frontend-service:
+    build:
+      context: ./services/frontend-service
+      dockerfile: Dockerfile
+    container_name: frontend-service
+    ports:
+      - "8501:8501"
+    environment:
+      # In Docker network, frontend communicates with Gateway via container name
+      # But since the frontend is a Streamlit app running in browser, it needs to access the Gateway via browser-accessible URL.
+      # Wait, Streamlit runs on server (container). It makes requests to Gateway FROM container.
+      # So we can use the container name `api-gateway`.
+      - API_GATEWAY_URL=http://api-gateway:8080/api/Inference
+    depends_on:
+      - api-gateway
+    networks:
+      - ai-network
+    restart: always
+
+networks:
+  ai-network:
+    driver: bridge
